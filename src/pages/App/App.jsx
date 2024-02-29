@@ -5,6 +5,7 @@ import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar';
 import LandingPage from '../LandingPage/LandingPage';
+import UploadNewItemPage from '../UploadNewItemPage/UploadNewItemPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -15,13 +16,15 @@ export default function App() {
       { user ?
           <>
             <NavBar user={user} setUser={setUser} />
+            <Routes>
+              <Route path="/upload-new-item" element={<UploadNewItemPage />} />
+            </Routes>
           </>
           :
           <>
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/auth" element={<AuthPage setUser={setUser} showSignUp={location.state?.showSignUp} />} />
-              {/* You may add more routes here */}
             </Routes>
           </>
       }
