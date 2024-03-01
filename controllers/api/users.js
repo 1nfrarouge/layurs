@@ -25,6 +25,7 @@ async function create(req, res) {
 }
 
 async function login(req, res) {
+  console.log(req.body)
   try {
     const user = await User.findOne({email: req.body.email});
     if (!user) throw new Error();
@@ -40,6 +41,7 @@ async function login(req, res) {
 /*--- Helper Functions --*/
 
 function createJWT(user) {
+  console.log(user)
   return jwt.sign(
     // data payload
     { user },

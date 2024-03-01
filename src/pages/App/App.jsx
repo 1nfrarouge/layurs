@@ -1,3 +1,4 @@
+import * as clothingAPI from '../../utilities/clothing-api'
 import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
@@ -9,7 +10,13 @@ import UploadNewItemPage from '../UploadNewItemPage/UploadNewItemPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+  const [clothes, setClothes]=useState([])
   const location = useLocation();
+
+  async function handleAddClothing(formData) {
+    const clothing = await clothingAPI.add(formData)
+    setClothes([...clothes, clothing])
+  }
 
   return (
     <main className="App">
@@ -17,7 +24,7 @@ export default function App() {
           <>
             <NavBar user={user} setUser={setUser} />
             <Routes>
-              <Route path="/upload-new-item" element={<UploadNewItemPage />} />
+              <Route path="/upload-new-item" element={<UploadNewItemPage handleAddClothing={handleAddClothing}/>} />
             </Routes>
           </>
           :
