@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 
 export default function UploadNewItemPage({handleAddClothing}) {
   const fileInputRef=useRef(useRef)
-  const [image, setImage]=useState(null)
+  // const [image, setImage]=useState(null)
   const [formData, setFormData]=useState({
     category: 'top',
     type: '',

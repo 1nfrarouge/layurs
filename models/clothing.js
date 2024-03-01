@@ -23,7 +23,8 @@ const clothingSchema = new Schema({
     type: String
   },
   season: {
-    type: String
+    type: String,
+    enum: ['spring', 'summer', 'fall', 'winter']
   },
   stored: {
     type: String
