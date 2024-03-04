@@ -7,6 +7,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar';
 import LandingPage from '../LandingPage/LandingPage';
 import UploadNewItemPage from '../UploadNewItemPage/UploadNewItemPage';
+import MyClosetPage from '../MyClosetPage/MyClosetPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -24,7 +25,9 @@ export default function App() {
           <>
             <NavBar user={user} setUser={setUser} />
             <Routes>
+              <Route path="/my-closet" element={<MyClosetPage/>}/>
               <Route path="/upload-new-item" element={<UploadNewItemPage handleAddClothing={handleAddClothing}/>} />
+            
             </Routes>
           </>
           :

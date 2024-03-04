@@ -1,14 +1,11 @@
-//import axios from "axios";
+// import axios from "axios";
 const uploadFile = require("../../config/upload-file");
+const getImages = require("../../config/get-images");
 
 const Photo = require('../../models/photo')
 const Clothing = require('../../models/clothing')
 
-module.exports = {
-    add,
-    uploadPhoto
-};
-  
+
 async function add(req, res) {
     req.body.user = req.user._id
     try {
@@ -16,6 +13,18 @@ async function add(req, res) {
         res.json(clothing)
     } catch (error) {
         console.log(error);
+    }
+}
+
+async function getClothing(req, res) {
+
+    try {
+        const clothing = await getImages.getAllImages()
+        res.json(clothing)
+        console.log("get clothing")
+    } catch (error) {
+        console.log("ERR")
+        console.log("err" + error)
     }
 }
 
@@ -35,3 +44,10 @@ async function uploadPhoto(req, res) {
         //res.status(500).send('Error uploading file to S3');
       }
 }
+
+module.exports = {
+    add,
+    uploadPhoto,
+    getClothing
+};
+  

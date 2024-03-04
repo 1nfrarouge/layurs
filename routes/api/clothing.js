@@ -5,6 +5,7 @@ const upload = require('multer')();
 
 router.post('/', clothingCTRL.add)
 router.post('/upload', upload.single('photo'), clothingCTRL.uploadPhoto)
+router.get('/get-clothing', clothingCTRL.getClothing)
 
 // const multer = require('multer');
 
