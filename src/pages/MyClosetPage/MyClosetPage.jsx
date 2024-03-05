@@ -1,47 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as clothingAPI from '../../utilities/clothing-api';
+import EditItemPage from '../EditItemPage/EditItemPage';
+import ClothingItem from '../../components/ClothingItem/ClothingItem'
 
 export default function MyClosetPage() {
-    console.log('hello 2')
-  const [closetItems, setClosetItems] = useState([]);
+    const [closetItems, setClosetItems] = useState([]);
+    const [edit, setEdit] = useState(false)
+    const navigate = useNavigate();
 
-  async function getClosetItems() {
-    console.log("Ran")
-    try{
-      const items = await clothingAPI.getAll();
-    //  console.log(items)
-      setClosetItems(items.data);
-      console.log(items.data);
-      }
-      catch(err) {
-          console.log(err)
-      }
-    //  setClosetItems(items);
-  }
+    async function getClosetItems() {
+        try {
+            const items = await clothingAPI.getAll();
+            setClosetItems(items);
+        } catch (err) {
+            console.error("Error fetching closet items:", err);
+        }
+    }
 
-  useEffect(() => {
-    
+    async function handleDelete(itemId) {
+        try {
+            await clothingAPI.deleteItem(itemId);
+            setClosetItems(closetItems.filter(item => item._id !== itemId));
+        } catch (error) {
+            console.error("Error deleting item:", error);
+        }
+    }
 
-    getClosetItems();
-  }, []);
+    useEffect(() => {
+        getClosetItems();
+    }, []);
 
-  function MapItems() {
-    return(
-      closetItems.map((item) => {
-        return(
-        <div key={item.Key} className="closet-item">
-            <img src={"https://layurs.s3.us-east-2.amazonaws.com/" + item.Key} alt={`Item uploaded on ${item.LastModified}`} style={{width: '100px', height: '100px'}} /> 
-          </div>)
-      })
-    )
-  }
+    async function handleUpdate(id, data) {
+      const updatedClothing = await clothingAPI.updateItem(id, data)
+      const updatedClothes = closetItems.map(c => c._id === updatedClothing._id ? updatedClothing : c)
+      setClosetItems(updatedClothes)
+      setEdit(false)
+    }
 
-  return (
-    <div>
-      <h2>MY CLOSET</h2>
-      <div className="closet-items">
-        <MapItems/>
-      </div>
-    </div>
-  );
+    return (
+        <div>
+            <h2>MY CLOSET</h2>
+            <div className="closet-items">
+            { 
+            edit ? <EditItemPage handleUpdate = {handleUpdate} clothing={edit}/>
+            :
+            closetItems.map((item, idx) => <ClothingItem handleDelete={handleDelete} setEdit={setEdit} item={item} key={item._id}/>)
+          }
+            </div>
+        </div>
+    );
 }

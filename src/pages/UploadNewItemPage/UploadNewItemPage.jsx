@@ -1,5 +1,6 @@
 import * as clothingAPI from '../../utilities/clothing-api'
 import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function UploadNewItemPage({handleAddClothing}) {
   const fileInputRef=useRef(useRef)
@@ -14,41 +15,34 @@ export default function UploadNewItemPage({handleAddClothing}) {
     season: 'spring',
     stored: '',
     image: '',
-  })
-  /*
-  const [file, setFile] = useState(null);
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFile(file);
-  };
+  });
+  const navigate = useNavigate();
 
-  const submitItem = (e) => {
+  async function handleSubmit(evt) {
+    evt.preventDefault()
+    await handleUpload()
+    handleAddClothing(formData)
+    navigate('/my-closet')
+  }
 
-  };
-*/
-async function handleSubmit(evt) {
-  evt.preventDefault()
-  handleUpload()
-  handleAddClothing(formData)
-}
+  function handleChange(evt) {
+    const data={...formData, [evt.target.name]:evt.target.value}
+    setFormData(data)
+  }
 
-function handleChange(evt) {
-  const data={...formData, [evt.target.name]:evt.target.value}
-  setFormData(data)
-}
-
-async function handleUpload() {
-  // Use FormData object to send the inputs in the fetch request
-  // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#uploading_a_file
-  const imageData = new FormData();
-  imageData.append('photo', fileInputRef.current.files[0]);
-  const newPhoto = await clothingAPI.uploadPhoto(imageData);
-  formData.image=newPhoto.url
-  console.log(newPhoto)
-  // setPhotos([newPhoto, ...photos]);
-  // Clear the description and file inputs
-  fileInputRef.current.value = '';
-}
+  async function handleUpload() {
+    // Use FormData object to send the inputs in the fetch request
+    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#uploading_a_file
+    const imageData = new FormData();
+    imageData.append('photo', fileInputRef.current.files[0]);
+    const newPhoto = await clothingAPI.uploadPhoto(imageData);
+    console.log(newPhoto)
+    formData.image = newPhoto.url
+    console.log(formData)
+    // setPhotos([newPhoto, ...photos]);
+    // Clear the description and file inputs
+    fileInputRef.current.value = '';
+  }
 
   return (
     <div>
@@ -73,7 +67,7 @@ async function handleUpload() {
         {/* Type Input */}
         <label>
           ITEM TYPE:
-          <input type="text" name="type" defaultValue={formData.type}/>
+          <input type="text" name="type" defaultValue={formData.type} />
         </label>
 
         {/* Brand Input */}
