@@ -8,7 +8,6 @@ const Clothing = require('../../models/clothing')
 
 async function add(req, res) {
     req.body.user = req.user._id
-    console.log('hello', req.body)
     try {
         const clothing = await Clothing.create(req.body)
         res.json(clothing)
@@ -22,7 +21,6 @@ async function getClothing(req, res) {
     try {
         const clothing = await Clothing.find({user: req.user._id})
         res.json(clothing)
-        console.log("get clothing")
     } catch (error) {
         console.log("ERR")
         console.log("err" + error)
@@ -30,20 +28,16 @@ async function getClothing(req, res) {
 }
 
 async function uploadPhoto(req, res) {
-    // console.log(req.file)
     try {
         if(req.file) {
             const photoUrl = await uploadFile(req.file)
             const photoDoc = await Photo.create({
                 url: photoUrl
             })
-            console.log('photoDoc', photoDoc)
             res.json(photoDoc)
         }
       } catch (error) {
-        console.log("")
         console.error(error);
-        //res.status(500).send('Error uploading file to S3');
       }
 }
 

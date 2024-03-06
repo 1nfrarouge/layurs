@@ -9,13 +9,11 @@ module.exports = {
 };
 
 function checkToken(req, res) {
-  console.log('req.user', req.user);
   res.json(req.exp);
 }
 
 async function create(req, res) {
   try {
-    // Add the user to the db
     const user = await User.create(req.body);
     const token = createJWT(user);
     res.json(token);
@@ -25,7 +23,6 @@ async function create(req, res) {
 }
 
 async function login(req, res) {
-  console.log(req.body)
   try {
     const user = await User.findOne({email: req.body.email});
     if (!user) throw new Error();
@@ -41,7 +38,6 @@ async function login(req, res) {
 /*--- Helper Functions --*/
 
 function createJWT(user) {
-  console.log(user)
   return jwt.sign(
     // data payload
     { user },

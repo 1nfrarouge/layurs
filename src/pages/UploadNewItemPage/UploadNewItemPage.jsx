@@ -37,9 +37,7 @@ export default function UploadNewItemPage({handleAddClothing}) {
     const imageData = new FormData();
     imageData.append('photo', fileInputRef.current.files[0]);
     const newPhoto = await clothingAPI.uploadPhoto(imageData);
-    console.log(newPhoto)
     formData.image = newPhoto.url
-    console.log(formData)
     // setPhotos([newPhoto, ...photos]);
     // Clear the description and file inputs
     fileInputRef.current.value = '';

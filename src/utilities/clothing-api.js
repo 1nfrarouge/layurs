@@ -3,7 +3,6 @@ import sendRequest from "./send-request";
 const BASE_URL = '/api/clothing';
 
 export function add(formData) {
-    console.log(formData)
     return sendRequest(BASE_URL, 'POST', formData);
 }
 
@@ -12,7 +11,6 @@ export function uploadPhoto(imageData) {
 }
 
 export async function getAll() {
-    console.log("get all ran");
     return sendRequest(BASE_URL);
 }
 
