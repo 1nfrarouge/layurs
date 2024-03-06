@@ -1,0 +1,92 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+  }
+  
+  .handle {
+    font-size: 1rem;
+    position: absolute;
+    top: 20px;
+    left: 35px;
+    letter-spacing: 0.2em;
+  }
+  
+  .login-button, .signup-button {
+    font-size: 1rem;
+    border-radius: 30px;
+    letter-spacing: 0.2em;
+  }
+  
+  .login-button {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+  }
+  
+  .signup-button, .barcode {
+    position: absolute;
+    bottom: 40px;
+    width: 250px;
+    letter-spacing: 0.2em;
+  }
+  
+  .signup-button {
+    left: 50px;
+  }
+
+  .login-button:hover, .signup-button:hover {
+    background-color: #dbdbdb;
+  }
+  
+  .barcode {
+    right: 50px;
+    width: 200px;
+  }
+  
+  .logo h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 12rem;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 0.2em;
+  }
+  
+  .large-heart {
+    width: 680px;
+    position: absolute;
+    top: 78%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  
+  .smaller-heart-logo {
+    width: 100px;
+    position: absolute;
+    top: 5%; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  
+  .slogan {
+    font-family: 'Mulish', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    position: absolute;
+    top: 20%; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
