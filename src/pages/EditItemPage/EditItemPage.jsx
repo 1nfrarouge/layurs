@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as clothingAPI from '../../utilities/clothing-api';
+import './EditItemPage.css'
 
-export default function EditItemPage({clothing, handleUpdate}) {
+export default function EditItemPage({ clothing, handleUpdate }) {
   const [formData, setFormData] = useState(clothing);
-  const fileInputRef=useRef(useRef)
+  const fileInputRef = useRef(null);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -16,104 +17,108 @@ export default function EditItemPage({clothing, handleUpdate}) {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-    await handleUpload()
-    handleUpdate(clothing._id, formData)
-    navigate('/my-closet')
+      await handleUpload();
+      handleUpdate(clothing._id, formData);
+      navigate('/my-closet');
     } catch (error) {
       console.error("Failed to update item:", error);
     }
   }
 
-async function handleUpload() {
-    // Use FormData object to send the inputs in the fetch request
-    // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#uploading_a_file
+  async function handleUpload() {
     const imageData = new FormData();
-    console.log(fileInputRef)
     imageData.append('photo', fileInputRef.current.files[0]);
     const newPhoto = await clothingAPI.uploadPhoto(imageData);
-    console.log(newPhoto)
-    formData.image = newPhoto.url
-    console.log(formData)
-    // setPhotos([newPhoto, ...photos]);
-    // Clear the description and file inputs
+    formData.image = newPhoto.url;
     fileInputRef.current.value = '';
   }
 
   return (
-<div>
-  <h2>EDIT ITEM</h2>
-  <form onSubmit={handleSubmit}>
-    {/* Category Selection */}
-    <label>
-      CATEGORY:
-      <select name="category" value={formData.category} onChange={handleChange}>
-        <option value="top">Top</option>
-        <option value="bottom">Bottom</option>
-        <option value="one-piece">One Piece</option>
-        <option value="outerwear">Outerwear</option>
-        <option value="swim">Swim</option>
-        <option value="intimates">Intimates</option>
-        <option value="accessory">Accessory</option>
-        <option value="jewelry">Jewelry</option>
-        <option value="footwear">Footwear</option>
-      </select>
-    </label>
+    <div className="EditItemPage">
+      <h2>EDIT ITEM</h2>
+      <form className="EditItemForm" onSubmit={handleSubmit}>
+        <div className="form-section">
+          <label>
+            CATEGORY:
+            <select name="category" value={formData.category} onChange={handleChange}>
+              <option value="top">Top</option>
+              <option value="bottom">Bottom</option>
+              <option value="one-piece">One Piece</option>
+              <option value="outerwear">Outerwear</option>
+              <option value="swim">Swim</option>
+              <option value="intimates">Intimates</option>
+              <option value="accessory">Accessory</option>
+              <option value="jewelry">Jewelry</option>
+              <option value="footwear">Footwear</option>
+            </select>
+          </label>
+        </div>
 
-    {/* Type Input */}
-    <label>
-      ITEM TYPE:
-      <input type="text" name="type" value={formData.type} onChange={handleChange} />
-    </label>
+        <div className="form-section">
+          <label>
+            ITEM TYPE:
+            <input type="text" name="type" value={formData.type} onChange={handleChange} />
+          </label>
+        </div>
 
-    {/* Brand Input */}
-    <label>
-      BRAND:
-      <input type="text" name="brand" value={formData.brand} onChange={handleChange} />
-    </label>
+        <div className="form-section">
+          <label>
+            BRAND:
+            <input type="text" name="brand" value={formData.brand} onChange={handleChange} />
+          </label>
+        </div>
 
-    {/* Size Input */}
-    <label>
-      SIZE:
-      <input type="text" name="size" value={formData.size} onChange={handleChange} />
-    </label>
+        <div className="form-section">
+          <label>
+            SIZE:
+            <input type="text" name="size" value={formData.size} onChange={handleChange} />
+          </label>
+        </div>
 
-    {/* Color Input */}
-    <label>
-      COLOR:
-      <input type="text" name="color" value={formData.color} onChange={handleChange} />
-    </label>
+        <div className="form-section">
+          <label>
+            COLOR:
+            <input type="text" name="color" value={formData.color} onChange={handleChange} />
+          </label>
+        </div>
 
-    {/* Occasion Input */}
-    <label>
-      OCCASION:
-      <input type="text" name="occasion" value={formData.occasion} onChange={handleChange} />
-    </label>
+        <div className="form-section">
+          <label>
+            OCCASION:
+            <input type="text" name="occasion" value={formData.occasion} onChange={handleChange} />
+          </label>
+        </div>
 
-    {/* Season Select */}
-    <label>
-      SEASON:
-      <select name="season" value={formData.season} onChange={handleChange}>
-        <option value="spring">Spring</option>
-        <option value="summer">Summer</option>
-        <option value="fall">Fall</option>
-        <option value="winter">Winter</option>
-      </select>
-    </label>
+        <div className="form-section">
+          <label>
+            SEASON:
+            <select name="season" value={formData.season} onChange={handleChange}>
+              <option value="spring">Spring</option>
+              <option value="summer">Summer</option>
+              <option value="fall">Fall</option>
+              <option value="winter">Winter</option>
+            </select>
+          </label>
+        </div>
 
-    {/* Stored Input */}
-    <label>
-      STORED:
-      <input type="text" name="stored" value={formData.stored} onChange={handleChange} />
-    </label>
+        <div className="form-section">
+          <label>
+            STORED:
+            <input type="text" name="stored" value={formData.stored} onChange={handleChange} />
+          </label>
+        </div>
 
-    {/* Image Upload */}
-    <label>
-      IMAGE:
-      <input type="file" name="image" accept="image/*" ref={fileInputRef}/>
-    </label>
+        <div className="form-section">
+          <label>
+            IMAGE:
+            <input type="file" name="image" accept="image/*" ref={fileInputRef} />
+          </label>
+        </div>
 
-    {/* Update Item Button */}
-    <button type="submit">UPDATE ITEM</button>
-  </form>
-</div>
-)}
+        <div className="form-section">
+          <button type="submit">UPDATE ITEM</button>
+        </div>
+      </form>
+    </div>
+  );
+}

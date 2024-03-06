@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# LAYURS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div id="header" align="center">
 
-## Available Scripts
+  <img src="./public/images/Screenshot.jpg" width="800" height="400">
 
-In the project directory, you can run:
+</div><br>
 
-### `npm start`
+<div id="description" align="center">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Description
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A closet organization app helping you keep track of your items and where they are stored.
 
-### `npm test`
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📸 : Screenshots 
 
-### `npm run build`
+  |   Description | Screenshot | 
+  |:-------------:| -----------|
+| <h3>HOME PAGE</h3> | <img src="./public/images/HomePageSS.jpg" width="700"/> |
+| <h3 align="center">MY CLOSET</h3> | <img src="./public/images/ClosetSS.jpg" width="700"/> |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 💻 : Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+MongoDB
+Mongoose
+React
+CSS
+Express.js
+Node.js
+Trello
+Canva
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 🔥 Getting Started
 
-### `npm run eject`
+[View Project Planning](https://trello.com/b/aaU1ZcPf/project-4-layurs)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[Explore Collider!](https://layurs-8c379c5d8e27.herokuapp.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# ⏭️ Next Steps
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Add Filtering and outfit creation

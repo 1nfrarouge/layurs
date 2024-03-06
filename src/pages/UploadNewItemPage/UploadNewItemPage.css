@@ -1,31 +1,53 @@
-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    align-items: center;
-  }
-  
-  form label {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-  }
-  
-  input, select {
-    padding: 10px;
-    margin-top: 5px;
-  }
-  
-  button[type="submit"] {
-    grid-column: span 2;
-    padding: 10px;
-    font-size: 16px;
-    background-color: #f1f1f1;
-    color: black;
-    border: 1px solid black;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #e0e0e0;
-  }
+.UploadNewItemPage {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.UploadNewItemForm {
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.UploadNewItemForm .form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.UploadNewItemForm label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.UploadNewItemForm input, .UploadNewItemForm select {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.UploadNewItemForm button[type="submit"] {
+  width: auto;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #f1f1f1;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.UploadNewItemForm button[type="submit"]:hover {
+  background-color: #dbdbdb;
+}

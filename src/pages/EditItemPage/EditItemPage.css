@@ -1,0 +1,55 @@
+.EditItemPage {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .EditItemForm {
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .EditItemForm .form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .EditItemForm label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .EditItemForm input,
+  .EditItemForm select {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .EditItemForm button[type="submit"] {
+    width: auto;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #f1f1f1;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 30px;
+    cursor: pointer;
+  }
+  
+  .EditItemForm button[type="submit"]:hover {
+    background-color: #dbdbdb;
+  }
+  

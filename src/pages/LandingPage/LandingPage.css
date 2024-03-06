@@ -62,13 +62,23 @@
     letter-spacing: 0.2em;
   }
   
+  @keyframes floatHeart {
+    0%, 100% {
+      transform: translate(-50%, -50%) translateY(0px);
+    }
+    50% {
+      transform: translate(-50%, -50%) translateY(-70px);
+    }
+  }  
+
   .large-heart {
     width: 680px;
     position: absolute;
-    top: 78%; 
+    top: 80%; 
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
+    animation: floatHeart 6s ease-in-out infinite;
   }
   
   .smaller-heart-logo {

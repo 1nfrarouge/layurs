@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import * as clothingAPI from '../../utilities/clothing-api';
 import EditItemPage from '../EditItemPage/EditItemPage';
 import ClothingItem from '../../components/ClothingItem/ClothingItem'
+import './MyClosetPage.css';
 
 export default function MyClosetPage() {
     const [closetItems, setClosetItems] = useState([]);

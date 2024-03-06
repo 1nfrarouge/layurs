@@ -1,6 +1,7 @@
 import * as clothingAPI from '../../utilities/clothing-api'
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './UploadNewItemPage.css'
 
 export default function UploadNewItemPage({handleAddClothing}) {
   const fileInputRef=useRef(useRef)
@@ -46,75 +47,74 @@ export default function UploadNewItemPage({handleAddClothing}) {
 
   return (
     <div>
-      <h2>NEW ITEM UPLOAD</h2>
-      <form onSubmit={handleSubmit} onChange={handleChange}>
-        {/* Category Select */}
+    <h2>NEW ITEM UPLOAD</h2>
+    <form className="UploadNewItemForm" onSubmit={handleSubmit} onChange={handleChange}>
+      <div className="form-section">
         <label>
           CATEGORY:
-          <select name="category" defaultValue={formData.category}>
-            <option value="top">TOP</option>
-            <option value="bottom">BOTTOM</option>
-            <option value="one-piece">ONE PIECE</option>
-            <option value="outerwear">OUTERWEAR</option>
-            <option value="swim">SWIM</option>
-            <option value="intimates">INTIMATES</option>
-            <option value="accessory">ACCESSORY</option>
-            <option value="jewelry">JEWELRY</option>
-            <option value="footwear">FOOTWEAR</option>
+          <select name="category" value={formData.category} onChange={handleChange}>
+            <option value="top">Top</option>
+            <option value="bottom">Bottom</option>
+            <option value="one-piece">One Piece</option>
+            <option value="outerwear">Outerwear</option>
+            <option value="swim">Swim</option>
+            <option value="intimates">Intimates</option>
+            <option value="accessory">Accessory</option>
+            <option value="jewelry">Jewelry</option>
+            <option value="footwear">Footwear</option>
           </select>
         </label>
-
-        {/* Type Input */}
+      </div>
+      <div className="form-section">
         <label>
           ITEM TYPE:
-          <input type="text" name="type" defaultValue={formData.type} />
+          <input type="text" name="type" value={formData.type} onChange={handleChange} />
         </label>
-
-        {/* Brand Input */}
+      </div>
+      <div className="form-section">
         <label>
           BRAND:
-          <input type="text" name="brand" defaultValue={formData.brand}/>
+          <input type="text" name="brand" value={formData.brand} onChange={handleChange} />
         </label>
-
-        {/* Size Input */}
+      </div>
+      <div className="form-section">
         <label>
           SIZE:
-          <input type="text" name="size" defaultValue={formData.size}/>
+          <input type="text" name="size" value={formData.size} onChange={handleChange} />
         </label>
-
-        {/* Color Input */}
+      </div>
+      <div className="form-section">
         <label>
           COLOR:
-          <input type="text" name="color" defaultValue={formData.color}/>
+          <input type="text" name="color" value={formData.color} onChange={handleChange} />
         </label>
-
-        {/* Occasion Input */}
+      </div>
+      <div className="form-section">
         <label>
           OCCASION:
-          <input type="text" name="occasion" defaultValue={formData.occasion}/>
+          <input type="text" name="occasion" value={formData.occasion} onChange={handleChange} />
         </label>
-
-        {/* Season Select */}
+      </div>
+      <div className="form-section">
         <label>
           SEASON:
-          <select name="season" defaultValue={formData.season}>
-            <option value="spring">SPRING</option>
-            <option value="summer">SUMMER</option>
-            <option value="fall">FALL</option>
-            <option value="winter">WINTER</option>
+          <select name="season" value={formData.season} onChange={handleChange}>
+            <option value="spring">Spring</option>
+            <option value="summer">Summer</option>
+            <option value="fall">Fall</option>
+            <option value="winter">Winter</option>
           </select>
         </label>
-
-        {/* Storage Input */}
+      </div>
+      <div className="form-section">
         <label>
           STORED:
-          <input type="text" name="stored" defaultValue={formData.stored} />
+          <input type="text" name="stored" value={formData.stored} onChange={handleChange} />
         </label>
-
-        <input type="file" id="myFile" name="image" accept="image" ref={fileInputRef}/>
-
-        <button type="submit">SUBMIT</button>
-      </form>
-    </div>
-  );
+      </div>
+      <input type="file" name="image" accept="image/*" ref={fileInputRef} />
+      <button type="submit">SUBMIT</button>
+    </form>
+  </div>
+);
 }
