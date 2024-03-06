@@ -8,7 +8,7 @@ import './MyClosetPage.css';
 export default function MyClosetPage() {
   const [closetItems, setClosetItems] = useState([]);
   const [edit, setEdit] = useState(false);
-  const [editItem, setEditItem] = useState(null); // Track the item being edited
+  const [editItem, setEditItem] = useState(null);
   const navigate = useNavigate();
 
   async function getClosetItems() {

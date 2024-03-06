@@ -35,7 +35,7 @@ export default function EditItemPage({ clothing, handleUpdate }) {
 
   return (
     <div className="EditItemPage">
-      <h2>EDIT ITEM</h2>
+      <h4>EDIT ITEM</h4>
       <form className="EditItemForm" onSubmit={handleSubmit}>
         <div className="form-section">
           <label>
