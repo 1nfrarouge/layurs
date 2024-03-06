@@ -36,7 +36,7 @@ Canva
 
 [View Project Planning](https://trello.com/b/aaU1ZcPf/project-4-layurs)
 
-[Explore Collider!](https://layurs-8c379c5d8e27.herokuapp.com/)
+[LAYURS](https://layurs-8c379c5d8e27.herokuapp.com/)
 
 # ⏭️ Next Steps
 
